@@ -12,7 +12,7 @@ body {
 :root {
   --primary: #0d0d0d;
   --secondary: #ffffff;
-  --tertiary: #efefef;
+  --tertiary: rgba(217, 217, 217, 0.75);
 }
 
 .container {
@@ -27,18 +27,18 @@ header,
 main,
 footer {
   width: 75%;
-  border: 1px solid var(--secondary);
   margin: 0 auto;
 }
 
 header {
-  padding: 16px 8px;
+  padding: 8px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   .header-title {
     font-size: 1.8rem;
+    font-weight: 600;
   }
 }
 
@@ -64,6 +64,50 @@ footer {
 
   &:hover {
     background-color: var(--tertiary);
-    opacity: 0.85;
+  }
+}
+
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  border: 1px solid var(--tertiary);
+  cursor: pointer;
+  padding: 24px;
+
+  .card-title {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .card-author {
+    font-size: 0.8rem;
+    color: var(--tertiary);
+    display: block;
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3em;
+
+    button {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      background: transparent;
+      color: var(--secondary);
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 0;
+    }
+  }
+
+  &:hover {
+    border-color: var(--secondary);
   }
 }
