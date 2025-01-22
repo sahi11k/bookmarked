@@ -37,12 +37,12 @@
     cardFooter.className = "card-footer";
 
     const readBtn = document.createElement("button");
-    readBtn.className = "read-btn";
+    readBtn.className = "secondary-btn read-btn";
     readBtn.textContent = book.status ? "Completed" : "Mark Completed";
     readBtn.addEventListener("click", markAsRead);
 
     const removeBtn = document.createElement("button");
-    removeBtn.className = "remove-btn";
+    removeBtn.className = "secondary-btn remove-btn";
     removeBtn.textContent = "Remove";
     removeBtn.addEventListener("click", removeBook);
 
