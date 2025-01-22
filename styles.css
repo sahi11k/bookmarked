@@ -15,6 +15,32 @@ body {
   --tertiary: rgba(217, 217, 217, 0.75);
 }
 
+/* default button styles */
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* primary button styles */
+.primary-btn {
+  background-color: var(--secondary);
+  color: var(--primary);
+
+  &:hover {
+    background-color: var(--tertiary);
+  }
+}
+
+/* secondary button styles */
+.secondary-btn {
+  background-color: var(--primary);
+  color: var(--secondary);
+}
+
 .container {
   background-color: var(--primary);
   color: var(--secondary);
@@ -40,6 +66,11 @@ header {
     font-size: 1.8rem;
     font-weight: 600;
   }
+
+  .add-btn {
+    padding: 12px;
+    min-width: 180px;
+  }
 }
 
 main {
@@ -48,23 +79,6 @@ main {
 
 footer {
   padding: 8px;
-}
-
-.add-btn {
-  background-color: var(--secondary);
-  color: var(--primary);
-  font-size: 0.8rem;
-  padding: 16px;
-  min-width: 180px;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  font-weight: bold;
-  text-transform: uppercase;
-
-  &:hover {
-    background-color: var(--tertiary);
-  }
 }
 
 .book-list {
@@ -93,21 +107,85 @@ footer {
     display: flex;
     justify-content: space-between;
     margin-top: 3em;
-
-    button {
-      border: none;
-      outline: none;
-      cursor: pointer;
-      background: transparent;
-      color: var(--secondary);
-      font-size: 0.8rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      padding: 0;
-    }
   }
 
   &:hover {
     border-color: var(--secondary);
+  }
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  top: 30%;
+  padding: 24px;
+  width: min(500px, 100%);
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .modal-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .close-modal-btn {
+    }
+  }
+
+  .modal-body {
+    padding: 8px 0 24px 0;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .form-item {
+        label {
+          display: block;
+          cursor: pointer;
+        }
+
+        input {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid var(--primary);
+          border-radius: 4px;
+          outline: none;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+
+    button {
+      min-width: 80px;
+      padding: 10px;
+    }
+
+    .ok-btn {
+      border: 1px solid var(--primary);
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .cancel-btn {
+      border: 1px solid var(--primary);
+      &:hover {
+        background-color: var(--secondary);
+      }
+    }
   }
 }

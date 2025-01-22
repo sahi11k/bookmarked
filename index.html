@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bookstore</title>
+    <title>Bookmarked</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="index.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,9 +16,31 @@
   <body>
     <div class="container">
       <header class="header">
-        <h2 class="header-title">Books Bazaar</h2>
-        <button class="add-btn">Add Book</button>
+        <h2 class="header-title">Bookmarked</h2>
+        <button class="primary-btn add-btn">Add Book</button>
       </header>
+      <dialog open id="modal" class="modal">
+        <div class="modal-header">
+          <div class="modal-title">Add Book</div>
+          <button class="primary-btn close-modal-btn">X</button>
+        </div>
+        <div class="modal-body">
+          <form action="" id="add-book-form">
+            <div class="form-item">
+              <label for="book-title">Book Title</label>
+              <input type="text" id="book-title" name="book-title" />
+            </div>
+            <div class="form-item">
+              <label for="book-author">Book Author</label>
+              <input type="text" id="book-author" name="book-author" />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="primary-btn cancel-btn">Cancel</button>
+          <button class="secondary-btn ok-btn">Add</button>
+        </div>
+      </dialog>
       <main>
         <div id="book-list" class="book-list"></div>
       </main>
