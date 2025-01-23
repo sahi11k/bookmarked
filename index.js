@@ -1,6 +1,29 @@
 (() => {
   const booksToRead = [];
-  const $bookList = document.getElementById("book-list");
+
+  const $bookList = document.querySelector("#book-list");
+  const $modal = document.querySelector("#modal");
+  const $addBookButton = document.querySelector("#add-book-btn");
+  const $closeModalButton = document.querySelector(".close-modal-btn");
+  const $modalBackdrop = document.querySelector(".modal-backdrop");
+
+  // modal functions
+  function openModal() {
+    $modal.showModal();
+    $modalBackdrop.style.display = "block";
+  }
+
+  function closeModal() {
+    $modal.close();
+    $modalBackdrop.style.display = "none";
+  }
+
+  init();
+
+  function init() {
+    $addBookButton.addEventListener("click", openModal);
+    $closeModalButton.addEventListener("click", closeModal);
+  }
 
   function Book(title, author, pages, status) {
     this.title = title;
