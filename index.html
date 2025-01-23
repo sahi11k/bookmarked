@@ -12,33 +12,52 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close"
+    />
   </head>
   <body>
     <div class="container">
       <header class="header">
-        <h2 class="header-title">Bookmarked</h2>
-        <button class="primary-btn add-btn">Add Book</button>
+        <h2 class="header-left">
+          <span class="header-icon">
+            <img src="assets/logo.svg" alt="logo" />
+          </span>
+          <span class="header-title">Bookmarked</span>
+        </h2>
+        <button class="primary-btn add-btn" id="add-book-btn">Add Book</button>
       </header>
-      <dialog open id="modal" class="modal">
-        <div class="modal-header">
-          <div class="modal-title">Add Book</div>
-          <button class="primary-btn close-modal-btn">X</button>
-        </div>
-        <div class="modal-body">
-          <form action="" id="add-book-form">
-            <div class="form-item">
-              <label for="book-title">Book Title</label>
-              <input type="text" id="book-title" name="book-title" />
-            </div>
-            <div class="form-item">
-              <label for="book-author">Book Author</label>
-              <input type="text" id="book-author" name="book-author" />
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button class="primary-btn cancel-btn">Cancel</button>
-          <button class="secondary-btn ok-btn">Add</button>
+      <div class="modal-backdrop"></div>
+      <dialog id="modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="modal-title">Add Book</div>
+            <button class="primary-btn close-modal-btn">
+              <span class="material-symbols-outlined icon"> close </span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="" id="add-book-form">
+              <div class="form-item">
+                <label for="book-title">Book Title</label>
+                <input type="text" id="book-title" name="book-title" required />
+              </div>
+              <div class="form-item">
+                <label for="book-author">Book Author</label>
+                <input
+                  type="text"
+                  id="book-author"
+                  name="book-author"
+                  required
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="primary-btn cancel-btn">Cancel</button>
+            <button class="secondary-btn ok-btn">Add</button>
+          </div>
         </div>
       </dialog>
       <main>
