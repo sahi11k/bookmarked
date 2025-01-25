@@ -68,7 +68,7 @@ header {
     margin-left: -4px;
   }
 
-  .add-btn {
+  .show-modal-btn {
     padding: 12px;
     min-width: 180px;
   }
@@ -93,21 +93,49 @@ footer {
   cursor: pointer;
   padding: 24px;
 
-  .card-title {
-    font-size: 1.2rem;
-    margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  .card-content {
+    flex: 1;
   }
 
-  .card-author {
+  .book-title-wrapper {
+    display: flex;
+    gap: 4px;
+  }
+
+  .book-title {
+    font-size: 1.2rem;
+    margin: 0;
+    word-break: break-word;
+    flex: 1;
+  }
+
+  .book-status-icon {
+    display: none;
+    img {
+      vertical-align: middle;
+    }
+  }
+
+  .book-author {
     font-size: 0.8rem;
     color: var(--tertiary);
-    display: block;
   }
 
   .card-footer {
     display: flex;
     justify-content: space-between;
-    margin-top: 3em;
+
+    button {
+      border-bottom: 1px solid var(--primary);
+
+      &:hover {
+        border-bottom: 1px solid var(--secondary);
+      }
+    }
   }
 
   &:hover {
@@ -143,16 +171,6 @@ footer {
         font-size: 1.2rem;
         font-weight: 600;
       }
-
-      .close-modal-btn {
-        width: 32px;
-        height: 32px;
-        text-align: center;
-        .icon {
-          vertical-align: middle;
-          color: var(--primary);
-        }
-      }
     }
 
     .modal-body {
@@ -176,6 +194,12 @@ footer {
             border-radius: 4px;
             outline: none;
             font-size: 1rem;
+          }
+
+          .error-msg {
+            color: red;
+            font-size: 0.8rem;
+            display: none;
           }
         }
       }
