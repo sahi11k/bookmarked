@@ -22,7 +22,7 @@
           </span>
           <span class="header-title">Bookmarked</span>
         </h2>
-        <button class="primary-btn show-modal-btn" id="show-modal-btn">
+        <button class="primary-btn show-modal-btn" id="show-modal-btn-primary">
           Add Book
         </button>
       </header>
@@ -58,8 +58,43 @@
       </dialog>
       <main>
         <div id="book-list" class="book-list"></div>
+        <div id="book-list-empty" class="book-list-empty">
+          <h3>Your Booklist is Empty</h3>
+          <p>
+            It looks like you haven't added any books yet. <br />Start building
+            your booklist now!
+          </p>
+          <button
+            class="primary-btn show-modal-btn"
+            id="show-modal-btn-secondary"
+          >
+            Add Book
+          </button>
+        </div>
       </main>
-      <footer>Copy Right Sk</footer>
+      <footer class="footer">
+        <div class="footer-left">
+          <div class="footer-socials-wrapper">
+            <p>get to know me better</p>
+            <p class="social-links">
+              <a href="https://github.com/sahillkumar" target="_blank" rel="noopener noreferrer">
+                <img src="assets/github.svg" alt="github" />
+            </a>
+            <a href="https://www.linkedin.com/in/sahil-kumar-a055b9181/" target="_blank" rel="noopener noreferrer">
+              <img src="assets/linkedin.svg" alt="linkedin" />
+            </a>
+            <a href="https://www.instagram.com/sahillkumar_007/" target="_blank" rel="noopener noreferrer">
+              <img src="assets/instagram.svg" alt="instagram" />
+            </a>
+            <a href="https://x.com/sahi11k/" target="_blank" rel="noopener noreferrer">
+              <img src="assets/twitter.svg" alt="twitter" />
+            </a>
+          </p>
+        </div>
+        <div class="footer-copyright">
+          <div>copyright &copy; <span id="current-year"></span> Sahil Kumar</div>
+        </div>
+      </footer>
     </div>
   </body>
 </html>
