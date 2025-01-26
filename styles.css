@@ -23,6 +23,7 @@ button {
   font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
+  padding: 0;
 }
 
 /* primary button styles */
@@ -80,11 +81,6 @@ main {
   flex-direction: column;
 }
 
-footer {
-  border-top: 1px solid var(--tertiary);
-  padding: 24px 0;
-}
-
 .book-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -124,34 +120,37 @@ footer {
 
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 2em;
 
   .card-content {
     flex: 1;
-  }
 
-  .book-title-wrapper {
-    display: flex;
-    gap: 4px;
-  }
-
-  .book-title {
-    font-size: 1.2rem;
-    margin: 0;
-    word-break: break-word;
-    flex: 1;
-  }
-
-  .book-status-icon {
-    display: none;
-    img {
-      vertical-align: middle;
+    .book-title-wrapper {
+      display: flex;
+      gap: 4px;
     }
-  }
 
-  .book-author {
-    font-size: 0.8rem;
-    color: var(--tertiary);
+    .book-title {
+      font-size: 1.2rem;
+      margin: 0;
+      word-break: break-word;
+      flex: 1;
+    }
+
+    .book-status-icon {
+      display: none;
+      img {
+        vertical-align: middle;
+      }
+      &.active {
+        display: block;
+      }
+    }
+
+    .book-author {
+      font-size: 0.8rem;
+      color: var(--tertiary);
+    }
   }
 
   .card-footer {
@@ -160,6 +159,7 @@ footer {
 
     button {
       border-bottom: 1px solid var(--primary);
+      padding-bottom: 2px;
 
       &:hover {
         border-bottom: 1px solid var(--secondary);
@@ -257,7 +257,11 @@ footer {
 }
 
 footer {
+  border-top: 1px solid var(--tertiary);
+  padding: 24px 0;
+
   .footer-socials-wrapper {
+    margin-bottom: 24px;
     text-align: center;
 
     .social-links {
@@ -284,5 +288,6 @@ footer {
   .footer-copyright {
     font-size: 0.8rem;
     color: var(--tertiary);
+    text-align: right;
   }
 }

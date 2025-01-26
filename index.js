@@ -1,19 +1,5 @@
 (() => {
-  let booksToRead = [
-    // {
-    //   title:
-    //     "The Lord of the Rings : The Fellowship of the  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
-    //   author: "J.R.R. Tolkien",
-    //   status: false,
-    //   id: generateId(),
-    // },
-    // {
-    //   title: "The Great Gatsby",
-    //   author: "F. Scott Fitzgerald asdfasdfasdf asdfasdfasdfasdf",
-    //   status: false,
-    //   id: generateId(),
-    // },
-  ];
+  let booksToRead = getBooksFromLocalStorage();
 
   // book list wrapper element
   const $bookList = document.querySelector("#book-list");
@@ -30,6 +16,10 @@
 
   // form elements
   const $form = document.querySelector("#add-book-form");
+
+  $form.addEventListener("submit", (e) => {
+    console.log(e);
+  });
 
   class Book {
     constructor(title, author, status = false) {
@@ -86,6 +76,7 @@
     const bookCard = createBookCard(book);
     $bookList.appendChild(bookCard);
     showEmptyBookList();
+    addBooksToLocalStorage(booksToRead);
   }
 
   function displayBooks() {
@@ -111,7 +102,7 @@
       book.title,
       50
     )}</h3>
-      <div class="book-status-icon">
+      <div class="book-status-icon ${book.status ? "active" : ""}">
         <img src="/assets/check-outlined.svg" alt="check-circle" />
       </div>
     </div>
@@ -152,13 +143,12 @@
       return book;
     });
 
-    card.querySelector(".book-status-icon").style.display = newBookStatus
-      ? "block"
-      : "none";
+    card.querySelector(".book-status-icon").classList.toggle("active");
 
     card.querySelector(".read-btn").textContent = newBookStatus
       ? "Mark Unread"
       : "Mark Read";
+    addBooksToLocalStorage(booksToRead);
   }
 
   function removeBook(e) {
@@ -167,6 +157,7 @@
     booksToRead = booksToRead.filter((book) => book.id !== card.id);
     card.remove();
     showEmptyBookList();
+    addBooksToLocalStorage(booksToRead);
   }
 
   function truncateString(str, maxLength) {
@@ -191,5 +182,12 @@
     } else {
       $bookListEmpty.style.display = "none";
     }
+  }
+  function addBooksToLocalStorage(books) {
+    localStorage.setItem("booksToRead", JSON.stringify(books));
+  }
+
+  function getBooksFromLocalStorage() {
+    return JSON.parse(localStorage.getItem("booksToRead")) || [];
   }
 })();
