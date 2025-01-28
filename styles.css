@@ -58,10 +58,10 @@ footer {
 }
 
 header {
-  padding: 12px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 12px 0 0 0;
 
   .header-title {
     font-size: 1.8rem;
@@ -76,6 +76,7 @@ header {
 }
 
 main {
+  padding: 12px 0 24px 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -228,7 +229,6 @@ main {
           .error-msg {
             color: red;
             font-size: 0.8rem;
-            display: none;
           }
         }
       }
@@ -251,6 +251,11 @@ main {
         &:hover {
           opacity: 0.8;
         }
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
       }
     }
   }
@@ -258,11 +263,13 @@ main {
 
 footer {
   border-top: 1px solid var(--tertiary);
-  padding: 24px 0;
 
   .footer-socials-wrapper {
-    margin-bottom: 24px;
     text-align: center;
+
+    p {
+      margin-bottom: 4px 0;
+    }
 
     .social-links {
       display: flex;
@@ -289,5 +296,6 @@ footer {
     font-size: 0.8rem;
     color: var(--tertiary);
     text-align: right;
+    padding-bottom: 8px;
   }
 }

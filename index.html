@@ -27,7 +27,7 @@
         </button>
       </header>
       <div class="modal-backdrop"></div>
-      <dialog id="modal" class="modal">
+      <dialog  id="modal" class="modal">
         <div class="modal-content">
           <div class="modal-header">
             <div class="modal-title">Add Book</div>
@@ -36,33 +36,33 @@
             <form id="add-book-form">
               <div class="form-item">
                 <label for="book-title">* Book Title</label>
-                <input type="text" id="book-title" name="book-title" />
+                <input type="text" id="book-title" name="book-title" required />
                 <span class="error-msg title-error-msg"
-                  >Book Title is required</span
+                  ></span
                 >
               </div>
               <div class="form-item">
                 <label for="book-author">* Book Author</label>
-                <input type="text" id="book-author" name="book-author" />
+                <input type="text" id="book-author" name="book-author" required />
                 <span class="error-msg author-error-msg"
-                  >Book Author is required</span
+                  ></span
                 >
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button class="primary-btn cancel-btn">Cancel</button>
-            <button class="secondary-btn ok-btn">Add</button>
+            <button class="secondary-btn ok-btn" form="add-book-form" >Add</button>
           </div>
         </div>
       </dialog>
       <main>
         <div id="book-list" class="book-list"></div>
         <div id="book-list-empty" class="book-list-empty">
-          <h3>Your Booklist is Empty</h3>
+          <h3>No books to read</h3>
           <p>
-            It looks like you haven't added any books yet. <br />Start building
-            your booklist now!
+            Looks like you haven't added any books yet. <br />Get started by
+            adding your first book!
           </p>
           <button
             class="primary-btn show-modal-btn"
