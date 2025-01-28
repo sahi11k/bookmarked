@@ -1,4 +1,15 @@
 (() => {
+  // book class
+  class Book {
+    constructor(title, author, status = false) {
+      this.title = title;
+      this.author = author;
+      this.status = status;
+      this.id = generateId();
+    }
+  }
+
+  // book state
   let booksToRead = getBooksFromLocalStorage();
 
   // book list wrapper element
@@ -13,20 +24,43 @@
     "#show-modal-btn-secondary"
   );
   const $modalBackdrop = document.querySelector(".modal-backdrop");
+  const $modalOkBtn = document.querySelector(".ok-btn");
 
   // form elements
   const $form = document.querySelector("#add-book-form");
+  const $bookTitleInput = document.querySelector("#book-title");
+  const $bookAuthorInput = document.querySelector("#book-author");
+  const $titleError = document.querySelector(".title-error-msg");
+  const $authorError = document.querySelector(".author-error-msg");
 
-  $form.addEventListener("submit", (e) => {
-    console.log(e);
-  });
+  function setupListeners() {
+    $showModalButtonPrimary.addEventListener("click", openModal);
+    $showModalButtonSecondary.addEventListener("click", openModal);
+    $modal.addEventListener("click", modalActionsHandler);
+    $bookTitleInput.addEventListener("input", ({ target: { value } }) => {
+      validateInput({
+        inputValue: value,
+        errorNode: $titleError,
+        fieldLabel: "Book Title",
+      });
+    });
 
-  class Book {
-    constructor(title, author, status = false) {
-      this.title = title;
-      this.author = author;
-      this.status = status;
-      this.id = generateId();
+    $bookAuthorInput.addEventListener("input", ({ target: { value } }) => {
+      validateInput({
+        inputValue: value,
+        errorNode: $authorError,
+        fieldLabel: "Book Author",
+      });
+    });
+  }
+
+  function validateInput({ inputValue, errorNode, fieldLabel }) {
+    if (isEmpty(inputValue)) {
+      errorNode.textContent = `${fieldLabel} is required`;
+      $modalOkBtn.disabled = true;
+    } else {
+      errorNode.textContent = "";
+      $modalOkBtn.disabled = false;
     }
   }
 
@@ -34,20 +68,51 @@
   function openModal() {
     $modal.showModal();
     $modalBackdrop.style.display = "block";
+    $modalOkBtn.disabled = true;
+  }
+
+  function resetForm() {
+    $form.reset();
+    $titleError.textContent = "";
+    $authorError.textContent = "";
   }
 
   function closeModal() {
-    $form.reset();
+    resetForm();
     $modal.close();
     $modalBackdrop.style.display = "none";
   }
 
-  init();
+  function init() {
+    setupListeners();
+    document.getElementById("current-year").textContent =
+      new Date().getFullYear();
+    displayBooks();
+  }
 
-  function formSubmitHandler() {
+  function validateForm({ title, author }) {
+    validateInput({
+      inputValue: title,
+      errorNode: $titleError,
+      fieldLabel: "Book Title",
+    });
+    validateInput({
+      inputValue: author,
+      errorNode: $authorError,
+      fieldLabel: "Book Author",
+    });
+    if (isEmpty(title) || isEmpty(author)) return false;
+    return true;
+  }
+
+  function formSubmitHandler(e) {
+    e.preventDefault();
     const formData = new FormData($form);
     const title = formData.get("book-title");
     const author = formData.get("book-author");
+
+    if (!validateForm({ title, author })) return;
+
     addBookToLibrary(title, author);
     closeModal();
   }
@@ -55,19 +120,10 @@
   function modalActionsHandler(e) {
     const classList = e.target.classList;
     if (classList.contains("ok-btn")) {
-      formSubmitHandler();
+      formSubmitHandler(e);
     } else if (classList.contains("cancel-btn")) {
       closeModal();
     }
-  }
-
-  function init() {
-    $showModalButtonPrimary.addEventListener("click", openModal);
-    $showModalButtonSecondary.addEventListener("click", openModal);
-    $modal.addEventListener("click", modalActionsHandler);
-    document.getElementById("current-year").textContent =
-      new Date().getFullYear();
-    displayBooks();
   }
 
   function addBookToLibrary(title, author) {
@@ -160,21 +216,6 @@
     addBooksToLocalStorage(booksToRead);
   }
 
-  function truncateString(str, maxLength) {
-    return str.length > maxLength ? str.slice(0, maxLength) + "..." : str;
-  }
-
-  function generateId() {
-    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
-      /[xy]/g,
-      function (c) {
-        const r = (Math.random() * 16) | 0;
-        const v = c === "x" ? r : (r & 0x3) | 0x8;
-        return v.toString(16);
-      }
-    );
-  }
-
   function showEmptyBookList() {
     const $bookListEmpty = document.querySelector("#book-list-empty");
     if (booksToRead.length === 0) {
@@ -183,11 +224,31 @@
       $bookListEmpty.style.display = "none";
     }
   }
-  function addBooksToLocalStorage(books) {
-    localStorage.setItem("booksToRead", JSON.stringify(books));
-  }
 
-  function getBooksFromLocalStorage() {
-    return JSON.parse(localStorage.getItem("booksToRead")) || [];
-  }
+  init();
 })();
+
+// utility functions
+function addBooksToLocalStorage(books) {
+  localStorage.setItem("booksToRead", JSON.stringify(books));
+}
+
+function getBooksFromLocalStorage() {
+  return JSON.parse(localStorage.getItem("booksToRead")) || [];
+}
+
+function generateId() {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    const r = (Math.random() * 16) | 0;
+    const v = c === "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
+function truncateString(str, maxLength) {
+  return str.length > maxLength ? str.slice(0, maxLength) + "..." : str;
+}
+
+function isEmpty(value) {
+  return !value || value?.trim().length === 0;
+}
