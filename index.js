@@ -159,7 +159,7 @@
       50
     )}</h3>
       <div class="book-status-icon ${book.status ? "active" : ""}">
-        <img src="/assets/check-outlined.svg" alt="check-circle" />
+        <img src="./assets/check-outlined.svg" alt="check-circle" />
       </div>
     </div>
     <div class="book-author" title="${book.author}">${truncateString(
