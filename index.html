@@ -18,7 +18,18 @@
       <header class="header">
         <h2 class="header-left">
           <span class="header-icon">
-            <img src="assets/logo.svg" alt="logo" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 0 24 24"
+              width="24px"
+              fill="#e8eaed"
+            >
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"
+              />
+            </svg>
           </span>
           <span class="header-title">Bookmarked</span>
         </h2>
@@ -27,7 +38,7 @@
         </button>
       </header>
       <div class="modal-backdrop"></div>
-      <dialog  id="modal" class="modal">
+      <dialog id="modal" class="modal">
         <div class="modal-content">
           <div class="modal-header">
             <div class="modal-title">Add Book</div>
@@ -37,22 +48,25 @@
               <div class="form-item">
                 <label for="book-title">* Book Title</label>
                 <input type="text" id="book-title" name="book-title" required />
-                <span class="error-msg title-error-msg"
-                  ></span
-                >
+                <span class="error-msg title-error-msg"></span>
               </div>
               <div class="form-item">
                 <label for="book-author">* Book Author</label>
-                <input type="text" id="book-author" name="book-author" required />
-                <span class="error-msg author-error-msg"
-                  ></span
-                >
+                <input
+                  type="text"
+                  id="book-author"
+                  name="book-author"
+                  required
+                />
+                <span class="error-msg author-error-msg"></span>
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button class="primary-btn cancel-btn">Cancel</button>
-            <button class="secondary-btn ok-btn" form="add-book-form" >Add</button>
+            <button class="secondary-btn ok-btn" form="add-book-form">
+              Add
+            </button>
           </div>
         </div>
       </dialog>
@@ -77,22 +91,41 @@
           <div class="footer-socials-wrapper">
             <p>get to know me better</p>
             <p class="social-links">
-              <a href="https://github.com/sahi11k/" target="_blank" rel="noopener noreferrer">
+              <a
+                href="mailto:sahil511kumar@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="assets/mail.svg" alt="mail" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/sahi11k/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="assets/linkedin.svg" alt="linkedin" />
+              </a>
+              <a
+                href="https://github.com/sahi11k/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src="assets/github.svg" alt="github" />
-            </a>
-            <a href="https://www.linkedin.com/in/sahi11k/" target="_blank" rel="noopener noreferrer">
-              <img src="assets/linkedin.svg" alt="linkedin" />
-            </a>
-            <a href="https://www.instagram.com/sahi11k/" target="_blank" rel="noopener noreferrer">
-              <img src="assets/instagram.svg" alt="instagram" />
-            </a>
-            <a href="https://x.com/sahi11k/" target="_blank" rel="noopener noreferrer">
-              <img src="assets/twitter.svg" alt="twitter" />
-            </a>
-          </p>
+              </a>
+              <a
+                href="https://x.com/sahi11k/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="assets/twitter.svg" alt="twitter" />
+              </a>
+            </p>
+          </div>
         </div>
         <div class="footer-copyright">
-          <div>copyright &copy; <span id="current-year"></span> Sahil Kumar</div>
+          <div>
+            copyright &copy; <span id="current-year"></span> Sahil Kumar
+          </div>
         </div>
       </footer>
     </div>

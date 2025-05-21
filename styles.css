@@ -53,7 +53,7 @@ button {
 header,
 main,
 footer {
-  width: 75%;
+  width: min(1280px, 90%);
   margin: 0 auto;
 }
 
@@ -63,15 +63,21 @@ header {
   align-items: center;
   padding: 12px 0 0 0;
 
+  .header-icon {
+    svg {
+      width: clamp(16px, 2vw, 24px);
+      height: clamp(16px, 2vw, 24px);
+    }
+  }
+
   .header-title {
-    font-size: 1.8rem;
+    font-size: clamp(1.25rem, 2.5vw, 1.8rem);
     font-weight: 600;
     margin-left: -4px;
   }
 
   .show-modal-btn {
-    padding: 12px;
-    min-width: 180px;
+    padding: 1em 2em;
   }
 }
 
@@ -263,7 +269,7 @@ main {
 
 footer {
   border-top: 1px solid var(--tertiary);
-
+  padding: 24px 0;
   .footer-socials-wrapper {
     text-align: center;
 
@@ -278,7 +284,7 @@ footer {
       gap: 16px;
 
       a {
-        border: 1px solid var(--secondary);
+        border: 1.5px solid var(--secondary);
         border-radius: 50%;
         height: 32px;
         width: 32px;
@@ -295,7 +301,7 @@ footer {
   .footer-copyright {
     font-size: 0.8rem;
     color: var(--tertiary);
-    text-align: right;
+    text-align: center;
     padding-bottom: 8px;
   }
 }
